@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' https://ustechautomations.com; font-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <title>Thanks: your Photo Lifeboat download</title>
+  <meta name="description" content="Where your Photo Lifeboat download opens after you pay.">
+  <link rel="stylesheet" href="https://ustechautomations.com/feeds/styles.css">
+  <link rel="stylesheet" href="../fonts.css">
+  <meta name="theme-color" content="#0b0d12">
+</head>
+<body data-family="photo-lifeboat">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="./">Photo Lifeboat <span>/ US Tech Automations</span></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Your order</p>
+    <h1>Thanks: your Photo Lifeboat download</h1>
+    <p class="lede" id="status" role="status" aria-live="polite"></p>
+    <p class="hero-cta"><a class="btn btn-buy" id="dl" href="#" hidden>Download</a></p>
+    <p class="note" id="late"></p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="wrap">
+    <section>
+      <h2>How to use it</h2>
+      <ol>
+        <li>Open the downloaded file in Chrome or Edge on a computer. Safari, Firefox and phones cannot save a folder.</li>
+        <li>Choose all your Google Takeout ZIP files, choose an empty folder, press build, then open index.html in that folder.</li>
+      </ol>
+      <p><a href="./">Back to the Photo Lifeboat page</a></p>
+    </section>
+    <section class="contact">
+      <h2>Questions or a refund</h2>
+      <p>Questions or a refund: <a href="mailto:ustechautomations@gmail.com">ustechautomations@gmail.com</a></p>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>This page opens your download in your own browser. Keep this address: it is how your order is found. Payments are handled by Stripe.</p>
+    <p class="addr">US Tech Automations &middot; 3298 N Glassford Hill Rd Ste 104 PMB 1055, Prescott Valley AZ 86314</p>
+  </div>
+</footer>
+<script>
+/* dp-store browser helpers. Inlined into every thanks page at build; tested in Node with the same file. */
+(function (root) {
+  "use strict";
+  var NAME_LABEL = "dp-store/name/v1|";
+  var KEY_LABEL = "dp-store/key/v1|";
+  var AAD_TEXT = "dp-store/v1";
+  var ID = /^cs_(live|test)_[A-Za-z0-9]{10,200}$/;
+  var FILE = /^f\/[0-9a-f]{16}\.bin$/;
+  var HEX64 = /^[0-9a-f]{64}$/;
+  var FILENAME = /^[A-Za-z0-9._-]{1,80}$/;
+
+  function enc(text) { return new TextEncoder().encode(text); }
+
+  function hex(buffer) {
+    var bytes = new Uint8Array(buffer);
+    var out = "";
+    for (var i = 0; i < bytes.length; i++) out += bytes[i].toString(16).padStart(2, "0");
+    return out;
+  }
+
+  function b64ToBytes(b64) {
+    var bin = atob(String(b64).replace(/\s/g, ""));
+    var out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  function isSessionId(id) { return typeof id === "string" && ID.test(id); }
+
+  async function sha256Hex(bytes) {
+    return hex(await crypto.subtle.digest("SHA-256", bytes));
+  }
+
+  async function nameFor(sessionId) {
+    return (await sha256Hex(enc(NAME_LABEL + sessionId))).slice(0, 40);
+  }
+
+  async function aesKey(raw) {
+    return crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"]);
+  }
+
+  async function decryptWith(raw, iv, cipher) {
+    return crypto.subtle.decrypt({ name: "AES-GCM", iv: iv, additionalData: enc(AAD_TEXT) }, await aesKey(raw), cipher);
+  }
+
+  function checkEnvelope(env) {
+    if (!env || typeof env !== "object") throw new Error("bad envelope");
+    if (typeof env.k !== "string" || b64ToBytes(env.k).length !== 32) throw new Error("bad envelope key");
+    if (typeof env.file !== "string" || !FILE.test(env.file)) throw new Error("bad envelope file");
+    if (typeof env.sha256 !== "string" || !HEX64.test(env.sha256)) throw new Error("bad envelope hash");
+    if (typeof env.filename !== "string" || !FILENAME.test(env.filename)) throw new Error("bad envelope filename");
+    return env;
+  }
+
+  /* blob is the parsed p/<name>.json: {v, n, c} sealed under the key derived from the session id */
+  async function openEnvelope(sessionId, blob) {
+    if (!blob || blob.v !== 1) throw new Error("bad blob");
+    var raw = await crypto.subtle.digest("SHA-256", enc(KEY_LABEL + sessionId));
+    var plain = await decryptWith(raw, b64ToBytes(blob.n), b64ToBytes(blob.c));
+    return checkEnvelope(JSON.parse(new TextDecoder().decode(plain)));
+  }
+
+  /* keyB64 is envelope.k; bytes is f/<version>.bin = 12-byte nonce + ciphertext */
+  async function openFile(keyB64, bytes) {
+    var u8 = new Uint8Array(bytes);
+    if (u8.length < 28) throw new Error("bad file");
+    return decryptWith(b64ToBytes(keyB64), u8.slice(0, 12), u8.slice(12));
+  }
+
+  root.dpstore = {
+    isSessionId: isSessionId, nameFor: nameFor, sha256Hex: sha256Hex,
+    openEnvelope: openEnvelope, openFile: openFile, checkEnvelope: checkEnvelope
+  };
+})(globalThis);
+</script>
+<script>
+(function () {
+  "use strict";
+  var S = window.dpstore;
+  var WAIT = "Checking for your payment. Your download usually appears here within 15 minutes; keep this page open.";
+  var LATE = "Still not here? Email ustechautomations@gmail.com with your receipt and we'll send it.";
+  var BAD_LINK = "This link does not have a valid payment reference. Open the link from your Stripe receipt, or email ustechautomations@gmail.com with your receipt.";
+  var BAD_ORDER = "We could not open your order. Email ustechautomations@gmail.com with your receipt and we'll send it.";
+  var BAD_FILE = "The download did not pass its check, so it was not offered. Email ustechautomations@gmail.com with your receipt and we'll send it.";
+  var POLL_MS = 15000;
+  var GIVE_UP_MS = 20 * 60 * 1000;
+  var status = document.getElementById("status");
+  var late = document.getElementById("late");
+  var dl = document.getElementById("dl");
+  var id = new URLSearchParams(location.search).get("s") || "";
+
+  if (!S.isSessionId(id)) { status.textContent = BAD_LINK; return; }
+  status.textContent = WAIT;
+
+  var started = Date.now();
+  var timer = 0;
+  var busy = false;
+  var done = false;
+
+  function stop() { if (timer) clearInterval(timer); timer = 0; }
+
+  async function deliver(blob) {
+    var env = await S.openEnvelope(id, blob);
+    var res = await fetch(env.file, { cache: "no-store" });
+    if (!res.ok) throw new Error("file");
+    var bytes = await S.openFile(env.k, await res.arrayBuffer());
+    if ((await S.sha256Hex(bytes)) !== env.sha256) throw new Error("hash");
+    var url = URL.createObjectURL(new Blob([bytes], { type: "application/octet-stream" }));
+    dl.href = url;
+    dl.setAttribute("download", env.filename);
+    dl.textContent = "Download " + env.filename;
+    dl.hidden = false;
+    status.textContent = "Your download is ready.";
+    late.textContent = "";
+  }
+
+  async function poll() {
+    if (busy || done) return;
+    busy = true;
+    try {
+      var name = await S.nameFor(id);
+      var res = await fetch("p/" + name + ".json?t=" + Date.now(), { cache: "no-store" });
+      if (res.ok) {
+        var blob = await res.json();
+        done = true;
+        stop();
+        try { await deliver(blob); }
+        catch (err) { status.textContent = (err && err.message === "hash") ? BAD_FILE : BAD_ORDER; }
+        return;
+      }
+    } catch (err) { /* not there yet; keep waiting */ }
+    finally { busy = false; }
+    if (Date.now() - started >= GIVE_UP_MS) { stop(); late.textContent = LATE; }
+  }
+
+  timer = setInterval(poll, POLL_MS);
+  poll();
+})();
+</script>
+</body>
+</html>

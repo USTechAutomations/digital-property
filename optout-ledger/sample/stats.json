@@ -1,0 +1,16 @@
+{
+ "edition": "2026-10-01",
+ "issues_read": 8259,
+ "rows": 62584,
+ "distinct_owners": 8210,
+ "distinct_repositories": 56487,
+ "distinct_whole_accounts": 5266,
+ "unknown_issues": 129,
+ "withdrawn_yes": 0,
+ "withdrawn_unknown": 1,
+ "excerpt": true,
+ "excerpt_rows": 100,
+ "excerpt_unknown_rows": 10,
+ "full_edition_rows": 62584,
+ "full_edition_unknown_issues": 129
+}

@@ -1,0 +1,8 @@
+path,source,reason
+Takeout/Google Photos/Photos from 2021/notes.txt,takeout-001.zip : Takeout/Google Photos/Photos from 2021/notes.txt,not a recognised photo or video type; not copied
+Takeout/Google Photos/Trash/binned_23.jpg,takeout-001.zip : Takeout/Google Photos/Trash/binned_23.jpg,in Google Photos bin; not copied
+Takeout/Google Photos/Papierkorb/binned_24.jpg,takeout-001.zip : Takeout/Google Photos/Papierkorb/binned_24.jpg,in Google Photos bin; not copied
+Takeout/Google Photos/Bin/binned_25.jpg,takeout-001.zip : Takeout/Google Photos/Bin/binned_25.jpg,in Google Photos bin; not copied
+Takeout/Google Photos/Trash/binned_dupe.jpg,takeout-001.zip : Takeout/Google Photos/Trash/binned_dupe.jpg,in Google Photos bin; not copied
+Library/Undated/badtime.jpg,takeout-001.zip : Takeout/Google Photos/Photos from 2019/badtime.jpg,details file has no usable photo-taken date; date not guessed
+Library/Undated/orphan.png,takeout-001.zip : Takeout/Google Photos/Photos from 2019/orphan.png,no matching details file found; date not guessed

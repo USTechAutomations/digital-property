@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /*/thanks.html
+Disallow: /*/p/
+Disallow: /*/f/
+Sitemap: https://ustechautomations.github.io/digital-property/sitemap.xml
