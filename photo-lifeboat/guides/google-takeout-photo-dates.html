@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Google Takeout photos with the wrong date: how to fix them</title>
+  <meta name="description" content="Your Google Photos download shows the wrong dates or comes with extra .json files. Why that happens, and the free and paid ways to put the dates back.">
+  <link rel="canonical" href="https://ustechautomations.github.io/digital-property/photo-lifeboat/guides/google-takeout-photo-dates.html">
+  <link rel="stylesheet" href="https://ustechautomations.com/feeds/styles.css">
+  <link rel="stylesheet" href="../../fonts.css">
+  <meta name="theme-color" content="#0b0d12">
+</head>
+<body data-family="photo-lifeboat">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="../">Photo Lifeboat <span>/ US Tech Automations</span></a>
+    <p class="crumbs"><a href="../">Photo Lifeboat</a><span class="sep">/</span>Guides</p>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Free guide · Google Takeout</p>
+    <h1>Google Takeout photos with the wrong date: how to fix them</h1>
+    <p class="lede">When you download your Google Photos with Google Takeout, the date your computer shows for each photo can be wrong, and a pile of extra <code>.json</code> files comes along. This guide explains why and walks through the free fixes first.</p>
+    <dl class="rail">
+      <div><dt>Cost of the fixes below</dt><dd>Free</dd></div>
+      <div><dt>Sources checked</dt><dd>2026-10-02</dd></div>
+      <div><dt>Paid tool</dt><dd>Photo Lifeboat, $29 once</dd></div>
+    </dl>
+    <p class="hero-cta"><a class="btn btn-buy" href="../">Make an offline family album: Photo Lifeboat, $29</a></p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="wrap">
+    <section>
+      <h2>The short answer</h2>
+      <p>The dates are usually not lost. A popular free helper explains that Takeout gives you ZIP files full of small folders with strange <code>.json</code> files inside, and that it fixes each file&#x27;s &quot;last modified&quot; date. The same helper says most photos should still carry their original date inside the picture file itself.</p>
+      <p>So the job has two parts: gather the photos into one place, and put the date Google kept back onto each file. Free tools do this. Use one of them if you are comfortable typing commands.</p>
+    </section>
+
+    <section>
+      <h2>What you are looking at</h2>
+      <p>Google&#x27;s help page says you can export Google products, including Photos, from the Google Takeout page. It offers ZIP files, and if your data is bigger than the archive size you choose, it makes several archives. So one library often arrives as many ZIP files.</p>
+      <p>The helper&#x27;s README describes what you find when you open them: hundreds of little folders with <code>.json</code> files inside. Those files are the extra details Google keeps next to each photo. They are not photos, so do not delete them until your dates are fixed.</p>
+      <p>The date a file manager shows is the file&#x27;s last-modified date. That is a different thing from the date stored inside a photo. This is why a photo can look wrong in a folder while the picture itself still knows when it was taken.</p>
+    </section>
+
+    <section>
+      <h2>The steps</h2>
+      <ol>
+        <li>Keep every original ZIP file. The helper&#x27;s README says to keep them in case anything goes wrong.</li>
+        <li>When you ask Google for the export, pick only Google Photos. The README says to &quot;deselect all&quot; and then select only Google Photos.</li>
+        <li>Unzip all the parts and merge them so every <code>Takeout</code> folder becomes one.</li>
+        <li>Run a helper (next section) to gather the photos and set the dates.</li>
+        <li>Check a handful of photos in the result. If some look wrong, go back to the ZIP files you kept.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>The free ways</h2>
+      <h3>Google Photos Takeout Helper</h3>
+      <p>Its README says it takes all those folders, finds the photos, sets each file&#x27;s last-modified date correctly, and puts everything in one big folder, or folders divided by month. You download a program for your system from its releases tab and run it. On Windows the README says to double-click it; on Mac and Linux you run it from a terminal. It says the helper moves files by default, which is another reason to keep the ZIP files.</p>
+      <h3>ExifTool</h3>
+      <p>ExifTool&#x27;s home page calls it a platform-independent Perl library plus a command-line application for reading, writing and editing meta information in many kinds of files. The helper&#x27;s README suggests it as a second step if you want the date written inside the photos too, so you do not lose the creation time. This is the command the README gives for that:</p>
+      <div class="card wrap-long"><p><code>exiftool -overwrite_original -r -if &#x27;not defined DateTimeOriginal&#x27; -P &quot;-AllDates&lt;FileModifyDate&quot; &quot;your/output/folder/ALL_PHOTOS/&quot;</code></p></div>
+      <p class="muted">The README adds a warning: do not touch the files after running the helper, or the file dates the command reads may change. Read the README itself before running anything.</p>
+      <p>Both tools are free. Both are made by other people, and we are not rating them.</p>
+    </section>
+
+    <section>
+      <h2>Where our tool fits, and what it cannot do</h2>
+      <p>Photo Lifeboat is a $29 one-time tool that is one HTML file you open in Chrome or Edge on a Windows, Mac or Linux computer. You choose your Takeout ZIP files and an empty folder. It reads the ZIPs a piece at a time and never changes them. It matches each photo to Google&#x27;s details file and builds a folder with your photos filed by year and month, a page for each album, and an album viewer that opens with no internet. Nothing is uploaded.</p>
+      <p>On dates: it writes the date Google had stored back into JPEG files that had none. Other file types are left exactly as Google exported them. Their date is kept in a list and in the viewer, not written into the file. It also makes a list of anything it could not match, and it never guesses a date. Dates are in UTC, because Google does not store the time zone.</p>
+      <p>What it cannot do: it does not run in Safari, Firefox or on phones. It cannot recover photos that were never in your Google download. Some formats, such as HEIC, may not show in its viewer. We have tested it only on a small made-up Takeout, not yet on large real exports, and you can open a finished <a href="../sample/output/index.html">sample album</a> first.</p>
+      <p>If the free tools above already give you what you need, you do not need ours.</p>
+    </section>
+
+    <section>
+      <h2>Sources</h2>
+      <ul>
+        <li><a class="wrap-long" href="https://support.google.com/accounts/answer/3024190" rel="noopener">How to download your Google data (Google Account Help)</a>, fetched 2026-10-02</li>
+        <li><a class="wrap-long" href="https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper" rel="noopener">GooglePhotosTakeoutHelper README on GitHub</a>, fetched 2026-10-02</li>
+        <li><a class="wrap-long" href="https://exiftool.org/" rel="noopener">ExifTool by Phil Harvey</a>, fetched 2026-10-02</li>
+      </ul>
+      <p class="muted">Help pages change. Check the links before you act.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>This guide describes what the sources above say and is not legal advice. Questions or a refund: ustechautomations@gmail.com</p>
+    <p class="addr">US Tech Automations &middot; 3298 N Glassford Hill Rd Ste 104 PMB 1055, Prescott Valley AZ 86314</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Am I in The Stack? How to check and opt out</title>
+  <meta name="description" content="A plain-English guide to checking whether your code is in The Stack, the open code dataset used to train AI models, and how to file an opt-out request for free.">
+  <link rel="canonical" href="https://ustechautomations.github.io/digital-property/optout-ledger/guides/opt-out-of-the-stack.html">
+  <link rel="stylesheet" href="https://ustechautomations.com/feeds/styles.css">
+  <link rel="stylesheet" href="../../fonts.css">
+  <meta name="theme-color" content="#0b0d12">
+</head>
+<body data-family="optout-ledger">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="../">Opt-out Ledger <span>/ US Tech Automations</span></a>
+    <p class="crumbs"><a href="../">Opt-out Ledger</a><span class="sep">/</span>Guides</p>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Free guide &middot; The Stack</p>
+    <h1>Am I in The Stack? How to check and opt out</h1>
+    <p class="lede">The Stack is a huge open collection of code from GitHub, built to train AI models. You can check for free whether your code is in it, and ask for it to be removed by filing a public request. This guide shows each step, as the project describes them on 2026-10-02.</p>
+    <dl class="rail">
+      <div><dt>Cost to check</dt><dd>Free</dd></div>
+      <div><dt>Cost to opt out</dt><dd>Free</dd></div>
+      <div><dt>Facts checked on</dt><dd>2026-10-02</dd></div>
+      <div><dt>Paid tool</dt><dd>Opt-out Ledger, $49 per monthly edition</dd></div>
+    </dl>
+    <p class="hero-cta"><a class="btn btn-buy" href="../">Get the dated list: Opt-out Ledger, $49</a></p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="wrap">
+    <section>
+      <h2>The short answer</h2>
+      <p>Type your GitHub username into the free &ldquo;Am I in The Stack?&rdquo; page. It shows what of yours is in the dataset and can fill in an opt-out request for you. The request is a public GitHub issue, and it costs nothing.</p>
+      <p>Nobody here can promise what happens next. The project says repositories that opted out are removed from the dataset before each patch release, and that opting out excludes your code from the next iteration and from current and future model training. That is their statement, not ours.</p>
+    </section>
+
+    <section>
+      <h2>What The Stack is</h2>
+      <p>The current release is called The Stack v3. Its dataset card calls it &ldquo;the largest, most up-to-date open dataset of source code&rdquo;, crawled directly from GitHub and built to pre-train code models. The training part of it holds code in 713 programming languages from 173M repositories. The card says it reflects the state of GitHub in August 2025.</p>
+      <p>It follows two earlier versions, The Stack v1 and The Stack v2. This guide covers the opt-out process the project currently points to.</p>
+    </section>
+
+    <section>
+      <h2>The steps</h2>
+      <ol>
+        <li><strong>Check.</strong> Open the &ldquo;Am I in The Stack?&rdquo; page (linked in the sources below). Enter your GitHub username, or the name of an organization you own.</li>
+        <li><strong>Look at what is listed.</strong> The project says the page shows what is in the dataset and lets you pick what to remove.</li>
+        <li><strong>Decide how much to remove.</strong> The request form has two lists, and you fill in at least one. One list is for whole accounts and organizations, one name per line. The project says everything under each is removed, now and in the future. The other list is for specific repositories, written as <code>owner/repo</code>, one per line. Only those are removed, and everything else under that owner stays. List as many as you like, including old usernames and organizations.</li>
+        <li><strong>File the request.</strong> The page generates a pre-filled issue in the public repository <code>bigcode-project/opt-out-v2</code>. When we followed the new-issue link without being signed in, GitHub sent us to its sign-in page, so expect to need a GitHub account.</li>
+        <li><strong>Optional extras.</strong> You can say whether you own, maintain or contributed to what you listed, and add a proof link. The project says these are optional, and that it will follow up if it needs to check.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>What people have actually filed</h2>
+      <p>We keep a dated copy of the public requests. In our first edition, built on 2026-10-01 from requests filed up to 2026-09-30, we read 8,259 issues. We could read 8,130 of them and could not read 129. The earliest readable one was filed on 2023-03-29 and the latest on 2026-09-30.</p>
+      <div class="scroll">
+        <table>
+          <caption>The four busiest months for readable requests in our first edition. Every other month had fewer than 100.</caption>
+          <thead><tr><th scope="col">Month filed</th><th scope="col">Requests</th></tr></thead>
+          <tbody>
+            <tr><td>March 2024</td><td>1,921</td></tr>
+            <tr><td>July 2026</td><td>4,632</td></tr>
+            <tr><td>August 2026</td><td>650</td></tr>
+            <tr><td>September 2026</td><td>558</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Of the 8,130, 5,085 ask for a whole account to be removed, 3,555 list specific repositories, and 510 do both. Together they name 62,584 things to remove. Of the 8,130, 8,095 are marked closed on GitHub and 35 are open. These are counts of requests filed. They do not show that anything was removed, and a closed issue is not proof of removal.</p>
+    </section>
+
+    <section>
+      <h2>The free ways</h2>
+      <p>Everything in the steps above is free. The &ldquo;Am I in The Stack?&rdquo; page is free to use, and so is filing the request. The requests sit in a public repository, so you can read any of them for free on GitHub, including your own after you file it.</p>
+      <p>If you only want to opt yourself out, you do not need anything else. Stop here and use the steps.</p>
+    </section>
+
+    <section>
+      <h2>Where our tool fits, and what it cannot do</h2>
+      <p>Opt-out Ledger is for a different job. If your team holds a downloaded copy of The Stack, it gives you a spreadsheet of the opt-out requests filed in <code>bigcode-project/opt-out-v2</code>, cleaned up and dated. It also gives you a script that removes those repositories from your local copy and writes a report of what it removed. The script never changes your original files. It is $49 per monthly edition. You can open a free excerpt first: <a href="../sample/">100 of the 62,584 rows</a>.</p>
+      <p>It cannot file a request for you, and it does not say any request is valid, that a licence is revoked, or that a model forgot anything. It covers requests filed in that one repository only. This guide and the tool are not legal advice, and we are not affiliated with the BigCode project or Hugging Face.</p>
+    </section>
+
+    <section>
+      <h2>Sources</h2>
+      <ul>
+        <li><a class="wrap-long" href="https://huggingface.co/spaces/HuggingFaceCode/in-the-stack" rel="noopener">Am I in The Stack? (Hugging Face), fetched 2026-10-02</a></li>
+        <li><a class="wrap-long" href="https://github.com/bigcode-project/opt-out-v2" rel="noopener">Opt-out process for The Stack, bigcode-project/opt-out-v2, fetched 2026-10-02</a></li>
+        <li><a class="wrap-long" href="https://github.com/bigcode-project/opt-out-v2/issues" rel="noopener">The public opt-out issues, fetched 2026-10-02</a></li>
+        <li><a class="wrap-long" href="https://huggingface.co/datasets/HuggingFaceCode/stack-v3-train" rel="noopener">The Stack v3 dataset card, fetched 2026-10-02</a></li>
+        <li>Our own counts: the Opt-out Ledger edition dated 2026-10-01.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Built from public GitHub issues. This guide is not legal advice and promises no outcome. Not affiliated with the BigCode project or Hugging Face. Questions or a refund: ustechautomations@gmail.com</p>
+    <p class="addr">US Tech Automations &middot; 3298 N Glassford Hill Rd Ste 104 PMB 1055, Prescott Valley AZ 86314</p>
+  </div>
+</footer>
+</body>
+</html>

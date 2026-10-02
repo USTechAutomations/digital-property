@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ustechautomations.github.io/digital-property/</loc></url>
   <url><loc>https://ustechautomations.github.io/digital-property/photo-lifeboat/</loc></url>
+  <url><loc>https://ustechautomations.github.io/digital-property/photo-lifeboat/guides/google-takeout-photo-dates.html</loc></url>
   <url><loc>https://ustechautomations.github.io/digital-property/legacy-map/</loc></url>
+  <url><loc>https://ustechautomations.github.io/digital-property/legacy-map/guides/online-accounts-after-death.html</loc></url>
   <url><loc>https://ustechautomations.github.io/digital-property/legacy-map/providers/apple.html</loc></url>
   <url><loc>https://ustechautomations.github.io/digital-property/legacy-map/providers/dropbox.html</loc></url>
   <url><loc>https://ustechautomations.github.io/digital-property/legacy-map/providers/google.html</loc></url>
   <url><loc>https://ustechautomations.github.io/digital-property/legacy-map/providers/microsoft.html</loc></url>
   <url><loc>https://ustechautomations.github.io/digital-property/legacy-map/providers/paypal.html</loc></url>
   <url><loc>https://ustechautomations.github.io/digital-property/optout-ledger/</loc></url>
+  <url><loc>https://ustechautomations.github.io/digital-property/optout-ledger/guides/opt-out-of-the-stack.html</loc></url>
 </urlset>
