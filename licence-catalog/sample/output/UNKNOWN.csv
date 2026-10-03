@@ -1,0 +1,5 @@
+filename,reason,CSV row
+broken.png,"This image could not be opened; try exporting a still JPG, PNG or WebP",
+notes.txt,"Not JPG, PNG or WebP; skipped",
+prices.csv,"Not JPG, PNG or WebP; skipped",
+missing.png,CSV row has no matching input file,

@@ -1,0 +1,21 @@
+DELIVERY — CREATOR-SUPPLIED RECORD
+Order: DEMO-101
+Client: Avery Demo
+Payment: marked yes in creator's sheet (not independently checked)
+Date (UTC): 2026-10-03T00:00:00.000Z
+Delivered originals: 2
+
+image-001.png <- blue-study.png
+SHA-256: d784f2076ed386539a3ae0408966fb3eb5001e942a2419b33dbb9441cfcfe697
+Bytes: 14142
+
+image-002.jpg <- sun-study.jpg
+SHA-256: bef8d2ac6e862751a152a53a9d33ed6b195892d780d3f3f01de5c56a2df2ae86
+Bytes: 7677
+
+Creator's licence note (copied verbatim):
+Invented example only. Personal display, no resale.
+This note is supplied by the creator.
+
+Check the manifest against each original if needed.
+This record reports the creator’s note; it does not certify rights or give legal advice.

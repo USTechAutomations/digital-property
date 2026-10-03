@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "baseURL": "https://your-site.example/",
+  "creator": "Invented Studio",
+  "originalsIncluded": false,
+  "items": [
+    {
+      "id": "image-0001",
+      "filename": "portrait.png",
+      "title": "Quiet orbit",
+      "description": "Invented portrait-format artwork.\nA second line tests CSV newlines.",
+      "creator": "Invented Studio",
+      "credit_text": "Artwork by Invented Studio",
+      "copyright_notice": "Invented Studio — demonstration only",
+      "preview": "previews/image-0001.png",
+      "page": "items/image-0001.html",
+      "width": 200,
+      "height": 300,
+      "options": [
+        {
+          "licence": "Editorial",
+          "price": "25.00",
+          "currency": "USD",
+          "terms": "INVENTED SAMPLE TERMS: An invented editorial option, with \"credit\" as supplied by the creator.",
+          "contact_email": "creator@example.com",
+          "payment_link": ""
+        }
+      ]
+    },
+    {
+      "id": "image-0002",
+      "filename": "series/sun.png",
+      "title": "Blue circle, study",
+      "description": "A subfolder with the same basename as another image.",
+      "creator": "Invented Studio",
+      "credit_text": "Artwork by Invented Studio",
+      "copyright_notice": "Invented Studio — demonstration only",
+      "preview": "previews/image-0002.png",
+      "page": "items/image-0002.html",
+      "width": 300,
+      "height": 200,
+      "options": [
+        {
+          "licence": "Personal",
+          "price": "8.00",
+          "currency": "USD",
+          "terms": "INVENTED SAMPLE TERMS: Ask the creator before any use.",
+          "contact_email": "creator@example.com",
+          "payment_link": ""
+        }
+      ]
+    },
+    {
+      "id": "image-0003",
+      "filename": "sun.png",
+      "title": "Amber circle",
+      "description": "Invented geometric artwork, not a real photograph.",
+      "creator": "Invented Studio",
+      "credit_text": "Artwork by Invented Studio",
+      "copyright_notice": "Invented Studio — demonstration only",
+      "preview": "previews/image-0003.png",
+      "page": "items/image-0003.html",
+      "width": 300,
+      "height": 200,
+      "options": [
+        {
+          "licence": "Personal",
+          "price": "12.00",
+          "currency": "USD",
+          "terms": "INVENTED SAMPLE TERMS: One personal screen background. This is a demonstration, not a recommended licence.",
+          "contact_email": "creator@example.com",
+          "payment_link": ""
+        },
+        {
+          "licence": "Commercial",
+          "price": "60.00",
+          "currency": "USD",
+          "terms": "INVENTED SAMPLE TERMS: Contact the invented creator to agree the exact use. No automatic rights are granted.",
+          "contact_email": "",
+          "payment_link": "https://example.com/pay/amber"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "@context": "https://schema.org/",
+      "@type": "ImageObject",
+      "name": "Quiet orbit",
+      "description": "Invented portrait-format artwork.\nA second line tests CSV newlines.",
+      "contentUrl": "https://your-site.example/previews/image-0001.png",
+      "license": "https://your-site.example/terms.html#image-0001",
+      "acquireLicensePage": "https://your-site.example/items/image-0001.html#acquire",
+      "creator": {
+        "@type": "Person",
+        "name": "Invented Studio"
+      },
+      "creditText": "Artwork by Invented Studio",
+      "copyrightNotice": "Invented Studio — demonstration only"
+    },
+    {
+      "@context": "https://schema.org/",
+      "@type": "ImageObject",
+      "name": "Blue circle, study",
+      "description": "A subfolder with the same basename as another image.",
+      "contentUrl": "https://your-site.example/previews/image-0002.png",
+      "license": "https://your-site.example/terms.html#image-0002",
+      "acquireLicensePage": "https://your-site.example/items/image-0002.html#acquire",
+      "creator": {
+        "@type": "Person",
+        "name": "Invented Studio"
+      },
+      "creditText": "Artwork by Invented Studio",
+      "copyrightNotice": "Invented Studio — demonstration only"
+    },
+    {
+      "@context": "https://schema.org/",
+      "@type": "ImageObject",
+      "name": "Amber circle",
+      "description": "Invented geometric artwork, not a real photograph.",
+      "contentUrl": "https://your-site.example/previews/image-0003.png",
+      "license": "https://your-site.example/terms.html#image-0003",
+      "acquireLicensePage": "https://your-site.example/items/image-0003.html#acquire",
+      "creator": {
+        "@type": "Person",
+        "name": "Invented Studio"
+      },
+      "creditText": "Artwork by Invented Studio",
+      "copyrightNotice": "Invented Studio — demonstration only"
+    }
+  ]
+}

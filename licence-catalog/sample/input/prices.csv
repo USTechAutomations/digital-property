@@ -1,0 +1,7 @@
+filename,title,description,licence,price,currency,terms,contact_email,payment_link,creator,credit_text,copyright_notice
+sun.png,Amber circle,"Invented geometric artwork, not a real photograph.",Personal,12.00,USD,"INVENTED SAMPLE TERMS: One personal screen background. This is a demonstration, not a recommended licence.",creator@example.com,,Invented Studio,Artwork by Invented Studio,Invented Studio — demonstration only
+sun.png,Amber circle,"Invented geometric artwork, not a real photograph.",Commercial,60.00,USD,INVENTED SAMPLE TERMS: Contact the invented creator to agree the exact use. No automatic rights are granted.,,https://example.com/pay/amber,Invented Studio,Artwork by Invented Studio,Invented Studio — demonstration only
+portrait.png,Quiet orbit,"Invented portrait-format artwork.
+A second line tests CSV newlines.",Editorial,25.00,USD,"INVENTED SAMPLE TERMS: An invented editorial option, with ""credit"" as supplied by the creator.",creator@example.com,,Invented Studio,Artwork by Invented Studio,Invented Studio — demonstration only
+series/sun.png,"Blue circle, study",A subfolder with the same basename as another image.,Personal,8.00,USD,INVENTED SAMPLE TERMS: Ask the creator before any use.,creator@example.com,,Invented Studio,Artwork by Invented Studio,Invented Studio — demonstration only
+missing.png,Not supplied,,Personal,5.00,USD,INVENTED: not an available image.,creator@example.com,,Invented Studio,Artwork by Invented Studio,Invented Studio — demonstration only

@@ -1,0 +1,16 @@
+# Put this folder online
+
+1. Open index.html locally and check your captions, prices, terms and contacts. Check UNKNOWN.csv; missing terms mean an image is preview-only. Do not upload your input folder or original images.
+2. Choose hosting. GitHub Pages is available from public repositories on GitHub Free. Upload only this output folder's contents to a public repository and choose Settings → Pages → Deploy from a branch, your branch, / (root). A project site normally lives at https://NAME.github.io/REPOSITORY/. GitHub describes Pages as unsuitable for running an online business, e-commerce site or sites primarily directing commercial transactions; use it for a portfolio, and choose another provider for a primarily commercial catalogue.
+3. For a commercial catalogue, check Netlify's current Free plan limits and terms, then unzip the output and drag its folder (with index.html at the top) into Netlify Drop. Claim/manage your site through their account flow when requested. This tool does not create accounts or deploy. Avoid enabling a paid plan or add-ons. Free-tier limits can change.
+4. Copy the resulting public HTTPS site address, including any repository path, into Licence Catalog's site-address field. Build again, then replace the hosted output with this new folder. This replaces YOUR-SITE.example in metadata, catalog.json and sitemap.xml. Keep .nojekyll if using Pages.
+5. Fetch your own home, image pages, preview URLs and terms URLs. They must be public before search can use metadata. Submit sitemap.xml in Search Console if you choose. Structured data does not guarantee a Licensable badge, indexing, visitors or sales.
+
+Official help (read 2026-10-03):
+https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
+https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages
+https://docs.netlify.com/deploy/create-deploys/
+https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/
+https://developers.google.com/search/docs/appearance/structured-data/image-license-metadata
+
+You write your own terms. This tool provides no legal advice, checkout, payment verification or original-image delivery. Contact and payment links are the ones you entered. A watermark discourages reuse but is not access control.

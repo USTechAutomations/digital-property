@@ -1,0 +1,6 @@
+Order: DEMO-102
+Client: Morgan, "Example"
+Payment marked in sheet: no / uncertain
+Previews: 2
+Final originals: 0
+Check UNKNOWN.csv before sharing. Send only this order's previews or final folder, never the whole batch.

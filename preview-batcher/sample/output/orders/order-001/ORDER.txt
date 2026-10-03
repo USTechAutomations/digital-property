@@ -1,0 +1,6 @@
+Order: DEMO-101
+Client: Avery Demo
+Payment marked in sheet: yes
+Previews: 2
+Final originals: 2
+Check UNKNOWN.csv before sharing. Send only this order's previews or final folder, never the whole batch.

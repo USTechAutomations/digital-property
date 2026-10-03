@@ -1,0 +1,5 @@
+﻿"order_id","client_name","image_filenames","paid","licence_note"
+"DEMO-101","Avery Demo","blue-study.png|sun-study.jpg","yes","Invented example only. Personal display, no resale.
+This note is supplied by the creator."
+"DEMO-102","Morgan, ""Example""","blue-study.png|portraits/form-study.webp","no","Preview request only."
+"DEMO-103","Riley Sample","portraits/form-study.webp|missing.png|broken.png","unknown","Creator must check payment before releasing originals."

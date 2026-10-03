@@ -1,0 +1,4 @@
+"row","order_id","filename","reason"
+"4","DEMO-103","","Payment status is not yes/no; previews only."
+"4","DEMO-103","missing.png","Filename not found."
+"4","DEMO-103","broken.png","Image skipped: Browser cannot decode this image."
