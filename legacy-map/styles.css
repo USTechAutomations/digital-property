@@ -234,7 +234,7 @@ summary:focus-visible,
   white-space: nowrap; overflow-x: auto;
 }
 .crumbs a { color: var(--muted-fg); }
-.crumbs .sep { padding: 0 .5rem; opacity: .5; }
+.crumbs .sep { padding: 0 .5rem; color: var(--fg); opacity: 1; }
 
 /* ---------- hero ---------- */
 .hero { padding: 3.5rem 0 2rem; }

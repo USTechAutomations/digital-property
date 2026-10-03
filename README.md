@@ -6,7 +6,7 @@ Three one-time tools, each with a free sample on its page:
 
 - **Photo Lifeboat** ($29): turns a Google Photos Takeout download into a family album folder that opens with no Google account and no internet. https://ustechautomations.github.io/digital-property/photo-lifeboat/
 - **Legacy Map** ($29): a printable folder that tells your family what each company says to do with your online accounts after you die. https://ustechautomations.github.io/digital-property/legacy-map/
-- **Opt-out Ledger** ($49 per monthly edition): a dated list of every AI-training opt-out request filed against The Stack, plus a script that removes those repositories from your own copy. https://ustechautomations.github.io/digital-property/optout-ledger/
+- **Opt-out Ledger** ($49 per monthly edition): a dated list of every opt-out request in BigCode's public opt-out list for The Stack, plus a script that removes those repositories from your own copy. https://ustechautomations.github.io/digital-property/optout-ledger/
 
 ## Free guides
 

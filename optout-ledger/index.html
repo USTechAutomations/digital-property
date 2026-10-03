@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Opt-out Ledger — every Stack opt-out request, dated</title>
-  <meta name="description" content="Every AI-training opt-out request filed against The Stack, cleaned up and dated, with a script that removes those repositories from your local copy.">
+  <title>Opt-out Ledger — every opt-out request in BigCode's public opt-out list for The Stack, dated</title>
+  <meta name="description" content="Every opt-out request in BigCode's public opt-out list for The Stack, cleaned up and dated, with a script that removes those repositories from your local copy.">
   <meta name="theme-color" content="#0391FE">
   <link rel="stylesheet" href="https://ustechautomations.com/feeds/styles.css">
   <link rel="stylesheet" href="../fonts.css">
@@ -21,13 +21,13 @@
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow">Monthly edition</p>
-    <h1>Every Stack opt-out request, cleaned up and dated</h1>
+    <h1>Every opt-out request in BigCode's public opt-out list for The Stack, cleaned up and dated</h1>
     <p class="lede">For teams that hold a downloaded copy of The Stack: a spreadsheet of every opt-out request filed in the public <code>bigcode-project/opt-out-v2</code> repository, plus a script that removes those repositories from your local copy and tells you exactly what it removed.</p>
     <dl class="rail">
       <div><dt>Price</dt><dd class="price">$49 per monthly edition, one-time purchase</dd></div>
       <div><dt>Built for</dt><dd>Code-model, code-search and research teams</dd></div>
-      <div><dt>Edition</dt><dd>2026-10-01 (first edition, built from requests filed up to 2026-09-30)</dd></div>
-      <div><dt>Sample</dt><dd><a href="sample/">An excerpt of the real first edition: 100 of 62,584 rows</a></dd></div>
+      <div><dt>Edition</dt><dd>2026-10-01 (built from requests filed up to 2026-09-30)</dd></div>
+      <div><dt>Sample</dt><dd><a href="sample/">An excerpt of the real edition: 100 of 62,584 rows</a></dd></div>
     </dl>
     <p><a class="btn btn-buy btn-lg" href="https://buy.stripe.com/8x27sEfZI8GC9bK9Dk0sU3C">Buy — $49</a></p>
   </div>
@@ -40,16 +40,16 @@
       <ul>
         <li>A spreadsheet and a data file with one row per request and per thing to remove: whole account or one repository, owner, repository, date filed, current state, link to the public issue and a fingerprint of the request text.</li>
         <li>A filter script that reads your local copy (Parquet if you have pyarrow, or JSONL), drops the matching repositories, writes a filtered copy and a removal report with counts per request. It never changes your original files.</li>
-        <li>A list of requests we could not read, so nothing is hidden. In the first edition that is 129 of 8,259.</li>
+        <li>A list of requests we could not read, so nothing is hidden. In this edition that is 129 of 8,259.</li>
       </ul>
     </section>
 
     <section>
-      <h2>The first edition, in numbers</h2>
-      <p>Counted from our own capture on 2026-10-01 of the public repository.</p>
+      <h2>This edition, in numbers</h2>
+      <p>Counted from the 2026-10-01 edition of our capture of the public repository.</p>
       <div class="scroll">
         <table>
-          <caption>First edition (2026-10-01), counted from our capture</caption>
+          <caption>Edition (2026-10-01), counted from our capture</caption>
           <thead><tr><th scope="col">Item</th><th scope="col">Count</th></tr></thead>
           <tbody>
             <tr><td>Issues read (open and closed)</td><td>8,259</td></tr>
@@ -61,7 +61,7 @@
           </tbody>
         </table>
       </div>
-      <p>People filed 5,947 opt-out requests from January to September 2026, including 664 in August and 599 in September. The current Stack release was downloaded 177,226 times last month. Downloads are not unique buyers. Sources: the GitHub search API for <code>bigcode-project/opt-out-v2</code> and the Hugging Face API for <code>HuggingFaceCode/stack-v3-train</code>, both read on 2026-10-01.</p>
+      <p>This edition contains 5,864 readable opt-out requests filed from January to September 2026, including 650 in August and 558 in September. These counts exclude requests we could not read. The current Stack release was downloaded 177,226 times last month. Downloads are not unique buyers. Sources: filing dates counted from this edition’s <code>optouts.csv</code>; downloads from the Hugging Face API for <code>HuggingFaceCode/stack-v3-train</code>, read on 2026-10-01.</p>
     </section>
 
     <section>
@@ -76,7 +76,7 @@
 
     <section class="contact">
       <h2>Look before you buy</h2>
-      <p>The excerpt has the same columns, the same filter script and the same README as the full edition. After checkout the full file set is delivered in your browser; no account needed.</p>
+      <p>The excerpt has the same columns and the same filter script as the full edition; the sample README adds a sample banner. After checkout the full file set is delivered in your browser; no account needed.</p>
       <p><a class="btn btn-ghost" href="sample/">Open the excerpt</a></p>
       <p>Questions or a refund: <a href="mailto:ustechautomations@gmail.com">ustechautomations@gmail.com</a></p>
     </section>
