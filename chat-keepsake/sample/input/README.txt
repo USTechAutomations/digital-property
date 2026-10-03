@@ -1,0 +1,1 @@
+INVENTED sample. Both ZIPs describe the same invented conversation. Choose one ZIP at a time. The bare TXT demonstrates missing-media handling. Photos are generated pixels; the audio is a generated tone or silence.

@@ -8,6 +8,7 @@ One-time tools, each with a sample and clear limits on its product page:
 - **Heir Packet** ($29): Turn a CSV account list into a printable family handover packet. [Open product](./heir-packet/)
 - **Licence Catalog** ($29): Make a static image catalogue with previews and your own licence terms. [Open product](./licence-catalog/)
 - **Preview Batcher** ($19): Batch named client previews and original delivery folders for orders you mark paid. [Open product](./preview-batcher/)
+- **Chat Keepsake** ($19): Turn a WhatsApp chat export into an offline family book with photos and voice notes. [Open product](./chat-keepsake/)
 
 ## Free guides
 
@@ -17,6 +18,7 @@ One-time tools, each with a sample and clear limits on its product page:
 - [Make a family account list without sharing passwords](./heir-packet/guides/family-account-list.html)
 - [Host an image catalogue without exposing originals](./licence-catalog/guides/host-image-licensing-site.html)
 - [How to send watermarked client previews and keep originals private](./preview-batcher/guides/client-preview-delivery.html)
+- [Export a WhatsApp Chat With Photos and Voice Notes](./chat-keepsake/guides/export-whatsapp-chat.html)
 
 Nothing here is legal advice. Payments are handled by Stripe.
 Questions or a refund: ustechautomations@gmail.com

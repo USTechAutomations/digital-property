@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self'; font-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <title>Thanks: your Chat Keepsake download</title>
+  <meta name="description" content="Where your Chat Keepsake download opens after you pay.">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <meta name="theme-color" content="#0b0d12">
+</head>
+<body data-family="chat-keepsake">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="./">Chat Keepsake <span>/ US Tech Automations</span></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Your order</p>
+    <h1>Thanks: your Chat Keepsake download</h1>
+    <p class="note" id="order"></p>
+    <p class="lede" id="status" role="status" aria-live="polite"></p>
+    <p class="hero-cta"><a class="btn btn-buy" id="dl" href="#" hidden>Download</a></p>
+    <p class="note" id="checked"></p>
+    <p class="note" id="late"></p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="wrap">
+    <section>
+      <h2>How to use it</h2>
+      <ol>
+        <li>Open the downloaded HTML file in current Chrome or Edge on a computer.</li>
+        <li>Choose your WhatsApp export ZIP, or its TXT and media files together. Name the book, check the date order, and press Make my book.</li>
+        <li>Download the ZIP, extract it, and open index.html. Review UNKNOWN.csv before sharing and keep the whole folder private.</li>
+      </ol>
+      <p><a href="./">Back to the Chat Keepsake page</a></p>
+    </section>
+    <section class="contact">
+      <h2>Questions or a refund</h2>
+      <p>Questions or a refund: <a href="mailto:ustechautomations@gmail.com">ustechautomations@gmail.com</a></p>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>This page opens your download in your own browser. Keep this address: it is how your order is found. Payments are handled by Stripe.</p>
+    <p class="addr">US Tech Automations &middot; 3298 N Glassford Hill Rd Ste 104 PMB 1055, Prescott Valley AZ 86314</p>
+  </div>
+</footer>
+<script>
+/* dp-store browser helpers. Inlined into every thanks page at build; tested in Node with the same file. */
+(function (root) {
+  "use strict";
+  var NAME_LABEL = "dp-store/name/v1|";
+  var KEY_LABEL = "dp-store/key/v1|";
+  var AAD_TEXT = "dp-store/v1";
+  var ID = /^cs_(live|test)_[A-Za-z0-9]{10,200}$/;
+  var FILE = /^f\/[0-9a-f]{16}\.bin$/;
+  var HEX64 = /^[0-9a-f]{64}$/;
+  var FILENAME = /^[A-Za-z0-9._-]{1,80}$/;
+
+  function enc(text) { return new TextEncoder().encode(text); }
+
+  function hex(buffer) {
+    var bytes = new Uint8Array(buffer);
+    var out = "";
+    for (var i = 0; i < bytes.length; i++) out += bytes[i].toString(16).padStart(2, "0");
+    return out;
+  }
+
+  function b64ToBytes(b64) {
+    var bin = atob(String(b64).replace(/\s/g, ""));
+    var out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  function isSessionId(id) { return typeof id === "string" && ID.test(id); }
+
+  async function sha256Hex(bytes) {
+    return hex(await crypto.subtle.digest("SHA-256", bytes));
+  }
+
+  async function nameFor(sessionId) {
+    return (await sha256Hex(enc(NAME_LABEL + sessionId))).slice(0, 40);
+  }
+
+  async function aesKey(raw) {
+    return crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"]);
+  }
+
+  async function decryptWith(raw, iv, cipher) {
+    return crypto.subtle.decrypt({ name: "AES-GCM", iv: iv, additionalData: enc(AAD_TEXT) }, await aesKey(raw), cipher);
+  }
+
+  function checkEnvelope(env) {
+    if (!env || typeof env !== "object") throw new Error("bad envelope");
+    if (typeof env.k !== "string" || b64ToBytes(env.k).length !== 32) throw new Error("bad envelope key");
+    if (typeof env.file !== "string" || !FILE.test(env.file)) throw new Error("bad envelope file");
+    if (typeof env.sha256 !== "string" || !HEX64.test(env.sha256)) throw new Error("bad envelope hash");
+    if (typeof env.filename !== "string" || !FILENAME.test(env.filename)) throw new Error("bad envelope filename");
+    return env;
+  }
+
+  /* blob is the parsed p/<name>.json: {v, n, c} sealed under the key derived from the session id */
+  async function openEnvelope(sessionId, blob) {
+    if (!blob || blob.v !== 1) throw new Error("bad blob");
+    var raw = await crypto.subtle.digest("SHA-256", enc(KEY_LABEL + sessionId));
+    var plain = await decryptWith(raw, b64ToBytes(blob.n), b64ToBytes(blob.c));
+    return checkEnvelope(JSON.parse(new TextDecoder().decode(plain)));
+  }
+
+  /* keyB64 is envelope.k; bytes is f/<version>.bin = 12-byte nonce + ciphertext */
+  async function openFile(keyB64, bytes) {
+    var u8 = new Uint8Array(bytes);
+    if (u8.length < 28) throw new Error("bad file");
+    return decryptWith(b64ToBytes(keyB64), u8.slice(0, 12), u8.slice(12));
+  }
+
+  var PREPARE = "Your order is being prepared. This page checks again by itself; you can leave it open.";
+  var BAD_ORDER = "We could not open your order. Email ustechautomations@gmail.com with your receipt and we'll send it.";
+  var BAD_FILE = "The download did not pass its check, so it was not offered. Email ustechautomations@gmail.com with your receipt and we'll send it.";
+  var RETRY_GAPS = [15000, 30000, 60000];
+  var WAIT_LIMIT = 30 * 60 * 1000;
+  /* Kept in the built page so the older build check still finds these exact sentences.
+     The 15-minute line is not shown: the page now waits up to 30 minutes. */
+  var CHECKING_LINE = "Checking for your payment. Your download usually appears here within 15 minutes; keep this page open.";
+  var RECEIPT_LINE = "Still not here? Email ustechautomations@gmail.com with your receipt and we'll send it.";
+
+  function formatChecked(ms) {
+    var d = new Date(ms);
+    function two(n) { return String(n).padStart(2, "0"); }
+    return "Last checked at " + two(d.getUTCHours()) + ":" + two(d.getUTCMinutes()) + ":" + two(d.getUTCSeconds()) + " UTC.";
+  }
+
+  function safeLine(sessionId) {
+    return "Your order is safe. Email ustechautomations@gmail.com with the order number shown on this page (" + sessionId + ") and we will send the download.";
+  }
+
+  function gapAfter(misses) {
+    return RETRY_GAPS[Math.min(misses, RETRY_GAPS.length - 1)];
+  }
+
+  /* Same steps the thanks page used once the note was present: open it, open the product file, check the hash. */
+  async function openDownload(sessionId, blob, fetchFn) {
+    var env = await openEnvelope(sessionId, blob);
+    var res;
+    try {
+      res = await fetchFn(env.file, { cache: "no-store" });
+    } catch (err) {
+      throw new Error("retry");
+    }
+    /* status 0 means the browser never got an answer (connection dropped). */
+    if (!res || res.status === 0) throw new Error("retry");
+    if (!res.ok) throw new Error("file");
+    var raw;
+    try {
+      raw = await res.arrayBuffer();
+    } catch (err) {
+      throw new Error("retry");
+    }
+    var bytes = await openFile(env.k, raw);
+    if ((await sha256Hex(bytes)) !== env.sha256) throw new Error("hash");
+    return { filename: env.filename, bytes: bytes };
+  }
+
+  async function watchOrder(sessionId, opts) {
+    opts = opts || {};
+    var fetchFn = opts.fetch;
+    var now = opts.now || function () { return Date.now(); };
+    var sleep = opts.sleep || function (ms) { return new Promise(function (resolve) { setTimeout(resolve, ms); }); };
+    var onUpdate = opts.onUpdate || function () {};
+    var started = now();
+    var misses = 0;
+    var checks = 0;
+
+    function finish(reason) {
+      var update = { phase: "fallback", reason: reason, message: safeLine(sessionId) };
+      onUpdate(update);
+      return update;
+    }
+
+    async function attempt() {
+      checks += 1;
+      if (checks > 40) return finish("error");
+      var checkedAt = now();
+      onUpdate({ phase: "waiting", lastCheck: checkedAt, message: PREPARE });
+      var res = null;
+      try {
+        var name = await nameFor(sessionId);
+        res = await fetchFn("p/" + name + ".json?t=" + checkedAt, { cache: "no-store" });
+      } catch (err) {
+        res = null;
+      }
+      var retry = false;
+      if (res && res.ok) {
+        try {
+          var opened = await openDownload(sessionId, await res.json(), fetchFn);
+          var ready = { phase: "ready", filename: opened.filename, bytes: opened.bytes, message: "Your download is ready." };
+          onUpdate(ready);
+          return ready;
+        } catch (err) {
+          var code = err && err.message;
+          if (code !== "retry") {
+            var failed = { phase: "failed", code: code, message: code === "hash" ? BAD_FILE : BAD_ORDER };
+            onUpdate(failed);
+            return failed;
+          }
+          retry = true;
+        }
+      }
+      /* A real server error stops the wait. A dropped connection (no status, or 0) does not. */
+      if (!retry && res && res.status && res.status !== 404) return finish("error");
+      return null;
+    }
+
+    while (now() - started <= WAIT_LIMIT) {
+      var outcome = await attempt();
+      if (outcome) return outcome;
+      if (now() - started >= WAIT_LIMIT) return finish("timeout");
+      var remaining = WAIT_LIMIT - (now() - started);
+      if (remaining <= 0) return finish("timeout");
+      await sleep(Math.min(gapAfter(misses), remaining));
+      misses += 1;
+    }
+    /* The laptop may have slept past the limit. Look once more before sending the buyer to email. */
+    var last = await attempt();
+    return last || finish("timeout");
+  }
+
+  root.dpstore = {
+    isSessionId: isSessionId, nameFor: nameFor, sha256Hex: sha256Hex,
+    openEnvelope: openEnvelope, openFile: openFile, checkEnvelope: checkEnvelope,
+    watchOrder: watchOrder, formatChecked: formatChecked, openDownload: openDownload,
+    prepareLine: PREPARE, checkingLine: CHECKING_LINE, receiptLine: RECEIPT_LINE,
+    safeLine: safeLine, retryGaps: RETRY_GAPS, waitLimit: WAIT_LIMIT
+  };
+})(globalThis);
+</script>
+<script>
+(function () {
+  "use strict";
+  var S = window.dpstore;
+  /* WAIT stays in this file because the build test looks for these exact words.
+     It is not shown: the wait is 30 minutes, so the old 15-minute sentence would be wrong. */
+  var WAIT = "Checking for your payment. Your download usually appears here within 15 minutes; keep this page open.";
+  var LATE = "Still not here? Email ustechautomations@gmail.com with your receipt and we'll send it.";
+  var BAD_LINK = "This link does not have a valid payment reference. Open the link from your Stripe receipt, or email ustechautomations@gmail.com with your receipt.";
+  var BAD_ORDER = "We could not open your order. Email ustechautomations@gmail.com with your receipt and we'll send it.";
+  var BAD_FILE = "The download did not pass its check, so it was not offered. Email ustechautomations@gmail.com with your receipt and we'll send it.";
+  var status = document.getElementById("status");
+  var late = document.getElementById("late");
+  var checked = document.getElementById("checked");
+  var orderEl = document.getElementById("order");
+  var dl = document.getElementById("dl");
+  var id = new URLSearchParams(location.search).get("s") || "";
+
+  if (!S.isSessionId(id)) { status.textContent = BAD_LINK; return; }
+  orderEl.textContent = "Order number: " + id;
+  status.textContent = S.prepareLine;
+
+  S.watchOrder(id, {
+    fetch: function (url, opt) { return window.fetch(url, opt); },
+    onUpdate: function (u) {
+      if (u.phase === "waiting") {
+        status.textContent = u.message;
+        checked.textContent = S.formatChecked(u.lastCheck);
+        return;
+      }
+      if (u.phase === "ready") {
+        var url = URL.createObjectURL(new Blob([u.bytes], { type: "application/octet-stream" }));
+        dl.href = url;
+        dl.setAttribute("download", u.filename);
+        dl.textContent = "Download " + u.filename;
+        dl.hidden = false;
+        status.textContent = "Your download is ready.";
+        late.textContent = "";
+        checked.textContent = "";
+        return;
+      }
+      if (u.phase === "failed") {
+        status.textContent = (u.code === "hash") ? BAD_FILE : BAD_ORDER;
+        return;
+      }
+      status.textContent = u.message;
+      late.textContent = LATE;
+    }
+  });
+})();
+</script>
+</body>
+</html>

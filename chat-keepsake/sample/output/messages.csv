@@ -1,0 +1,15 @@
+﻿"id","source","line","local_datetime","original_timestamp","sender","kind","text","attachments"
+"1","_chat.txt","2","2024-12-31 18:00:00","31/12/2024, 18:00:00","","system","Messages and calls are end-to-end encrypted.",""
+"2","_chat.txt","3","2024-12-31 18:01:00","31/12/2024, 18:01:00","Rowan","message","A little book of our ordinary days. 💛",""
+"3","_chat.txt","4","2024-12-31 18:02:00","31/12/2024, 18:02:00","Kit","message","Tonight's list:
+Make soup
+Watch the stars ✨",""
+"4","_chat.txt","7","2025-01-01 09:15:00","01/01/2025, 09:15:00","Rowan","message","<attached: 00000012-PHOTO-2025-01-01-09-15-00.png>
+Our invented New Year's picnic.","media/00001.png"
+"5","_chat.txt","9","2025-01-01 09:16:00","01/01/2025, 09:16:00","Kit","message","<attached: 00000013-AUDIO-2025-01-01-09-16-00.wav>
+A generated test tone, not a person's voice.","media/00002.wav"
+"6","_chat.txt","11","2025-01-01 09:17:00","01/01/2025, 09:17:00","Kit","deleted","This message was deleted",""
+"7","_chat.txt","12","2025-02-02 10:20:00","02/02/2025, 10:20:00","Rowan","omitted","<Media omitted>",""
+"8","_chat.txt","13","2025-02-02 10:21:00","02/02/2025, 10:21:00","Rowan","message","<attached: missing-photo.jpg>",""
+"9","_chat.txt","14","2025-02-02 10:22:00","02/02/2025, 10:22:00","","system","Kit joined using this group's invite link",""
+"10","_chat.txt","15","2025-02-02 10:23:00","02/02/2025, 10:23:00","Kit","message","Keep this moment. 👨‍👩‍👧‍👦",""
